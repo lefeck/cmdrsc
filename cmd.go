@@ -9,21 +9,13 @@ import (
 	"time"
 )
 
-/*
-方式二：这种方式：相对来说也很简介， 只定义了原始数据结构对数据进行了规整，为此， 我将额外附加的参数也对外抽象了出来，这样，使用起来相对更加灵活，好用，用户
-可以根据自己的情况去适用特定的场景。
-for exmaple:
-cmdTmpl: lvremove --yes root
-parameter:  --reportformat=json", "--units=b", "--nosuffix
-这里的parameter有的人可能需要，有的人可能不需要.
-*/
-
 type cmdNameOpt struct {
 	cmdName string
 }
 
 func (c cmdNameOpt) Apply() string {
-	return fmt.Sprintf(strings.TrimSpace(fmt.Sprintf(c.cmdName)))
+	cmdstr := strings.Fields(c.cmdName)
+	return strings.Join(cmdstr, " ")
 }
 
 type CmdExecutor interface {
