@@ -1,4 +1,4 @@
-package cmdrsc
+package cdmrsc
 
 import (
 	"bytes"

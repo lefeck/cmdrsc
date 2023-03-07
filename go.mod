@@ -1,4 +1,4 @@
-module cmdrsc
+module github.com/lefeck/cmdrsc
 
 go 1.18
 
