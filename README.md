@@ -2,7 +2,7 @@
 
 this is a simple command Framework lib.
 
-## useage method
+## useage
 
 ```go
 go get  github.com/lefeck/cmdrsc
@@ -11,17 +11,24 @@ go get  github.com/lefeck/cmdrsc
 
 ## for example 
 ```go
-func main() {
-    log := logrus.New()
-    entry := logrus.NewEntry(log)
+import (
+	"fmt"
+	"github.com/lefeck/cmdrsc"
+	"github.com/sirupsen/logrus"
+)
 
-    n := NewExecutor(entry, 1)
-    parameter := ""
-    cmdTmpl := fmt.Sprintf(" ls")
-    stdout, _, err := n.RunCmd(n.RefreshCmd(cmdTmpl), parameter)
-    if err != nil {
-    fmt.Println(err)
+func main() {
+	log := logrus.New()
+	entry := logrus.NewEntry(log)
+	e := cdmrsc.NewExecutor(entry, 1)
+
+	parameter := ""
+	cmdTmpl := fmt.Sprintf(" ls -l")
+	stdout, _, err := e.RunCmd(e.RefreshCmd(cmdTmpl), parameter)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(stdout)
 }
-    fmt.Println(stdout)
-}
+
 ```
